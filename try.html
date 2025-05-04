@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Form</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .form-box {
+      background-color: #2c3742;
+      padding: 30px;
+      border-radius: 10px;
+      width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00a3cf;
+      border: 2px solid #00a3cf;
+      padding: 10px;
+      border-radius: 8px;
+      width: fit-content;
+      margin: 0 auto 20px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      border: none;
+      background-color: #1f2933;
+      color: white;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    button {
+      background-color: #008bb0;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #007799;
+    }
+
+    .image-box img {
+      width: 350px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .image-box img {
+        width: 280px;
+      }
+
+      .form-box {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="image-box">
+      <img src="./assets/images/contact-me.svg" alt="Connect Illustration" />
+    </div>
+    <div class="form-box">
+      <h2>Let's Connect</h2>
+      <form id="contact-form">
+        <label for="name">Name</label>
+        <input type="text" name="user_name" id="name" placeholder="Enter your name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" name="user_email" id="email" placeholder="name@example.com" required>
+
+        <label for="message">Message</label>
+        <textarea name="message" id="message" placeholder="Write your message..." required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("4-JOrmEbPOl16YBeC"); // Replace with your EmailJS public key
+    })();
+
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      emailjs.sendForm("service_exsy0gs", "template_umbzu68", this)
+        .then(() => {
+          alert("Message sent successfully!");
+          this.reset(); // clear form
+        }, (error) => {
+          alert("Failed to send message:\n" + JSON.stringify(error));
+        });
+    });
+  </script>
+</body>
+</html>
