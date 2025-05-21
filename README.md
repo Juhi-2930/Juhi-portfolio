@@ -4,7 +4,7 @@ Welcome to my personal portfolio repository! This project showcases my skills, p
 
 ## Live Demo
 
-Check out the live version of my portfolio: [Live Demo](https://github.com/Juhi-2930/)
+Check out the live version of my portfolio: [Live Demo](https://juhi-portfolio-five.vercel.app/)
 
 ## About Me
 
